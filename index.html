@@ -1,0 +1,88 @@
+<!doctype html>
+<html ng-app="app">
+
+<head>
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
+
+    <!-- inject:css -->
+    <!-- endinject -->
+</head>
+
+<body ng-controller="YouTubeSearchController as ytSearchCtrl">
+
+    <div class='container'>
+    {{ytSearch.check}}
+    </div>
+
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <!-- endbower -->
+
+    <!-- inject:js -->
+    <script src="app/app.module.js"></script>
+    <script src="app/charts/youtubesearch.controller.js"></script>
+    <script src="app/charts/youtubeapi.factory.js"></script>
+    <!-- endinject -->
+</body>
+
+</html>
+<!-- STEP 6 - BUILDING THE UI -->
+<!--
+      I have setup most of the page and Gulp stuff for you. Your job is to
+      build the grid of charts as shown in the example image.
+
+      I recommend reading this W3Schools article on the Bootstrap Grid System first.
+      https://www.w3schools.com/bootstrap/bootstrap_grid_system.asp
+
+      Build a 1 row, 3 column bootstrap grid.
+      Inside the first column:
+        - Add an h1 element for the graph title
+        - Insert the HTML for an Angular Line Chart underneath.
+          (You can find the example HTML here: http://jtblin.github.io/angular-chart.js/)
+
+          You will need to pass `chartsCtrl.bigMac.data` to the `chart-data` directive,
+          and `chartsCtrl.bigMac.labels` to the `chart-labels` directive.
+
+      Once you've done that, you should see the chart appear before your eyes,
+      and our application is complete!
+
+      __If it didn't work for you__
+      - Check your console and fix as many errors as you can, starting
+        from top to bottom. (SyntaxErrors are easy fixes - find those first!)
+
+      - If you get stuck, try using Google to find the answer. Copy the error
+        into Google and see what happens, trimming unique parts of your search
+        term away to broaden your search.
+
+      - If all else fails, come find me!
+
+      __If it worked for you__
+      - Try adding some more complex charts with multiple series and see if you
+        can find any interesting correlations between data points provided by
+        INQstats!
+
+      - To reduce the amount of code you had to write, try representing the charts
+        themselves as an array of objects in Angular like this:
+
+        ```js
+        vm.charts = [{
+          name: 'Big Mac Index',
+          key: 'bigmac_index'
+        }, {
+          name: 'Birth Rate',
+          key: 'birth_rate'
+        }]
+        ```
+
+        It is possible using the data structure above to reduce the amount of code
+        drastically.
+
+        The only hint I will give you - Remember that arrays are objects in JavaScript,
+        and you can access property values either using dot notation (`obj.key`)
+        or array notation (`obj['key']`).
+
+       -->
