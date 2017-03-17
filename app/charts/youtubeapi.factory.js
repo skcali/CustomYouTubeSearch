@@ -14,7 +14,12 @@
         };
 
         return service;
+        function init() {
+          gapi.client.setApiKey("AIzaSyA3MMCi47ciNhnauXvtAMeZrU5TNNxZCSI");
+          gapi.client.load("youtube", "v3", function (){
 
+          });
+        }
         function getData(data) {
             var url = 'https://www.googleapis.com/youtube/v3/videos?id=7lCDEYXw3mM&key=' + youTubeApiKey + '&part=snippet,contentDetails,statistics,status';
 
