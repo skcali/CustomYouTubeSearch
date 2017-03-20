@@ -5,35 +5,85 @@
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <!-- endbower -->
-
     <!-- inject:css -->
     <!-- endinject -->
 </head>
 
 <body ng-controller="YouTubeSearchController as ytSearchCtrl">
-
-  <div class='container'>
-
-      <input type="text" ng-model="ytSearchCtrl.vidInput" />
-      <button type="button" ng-click="ytSearchCtrl.vidSearch()">Search</button>
-      <youtube-video video-id="'sMKoNBRZM1M'"></youtube-video>
-  </div>
-
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+          </button>
+            <a class="navbar-brand" href="#">Custom YouTube Search</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Playlist #1 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li ng-repeat="list in ytSearchCtrl.newPlaylist"><a href="#">{{list}}</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#" ng-click="ytSearchCtrl.playlistSearch()">Go!</a></li>
+                    </ul>
+                </li>
+                <!-- sample code
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Playlist #2 <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Search Term</a></li>
+                    <li><a href="#">Search Term</a></li>
+                    <li><a href="#">Search Term</a></li>
+                    <li><a href="#">Search Term</a></li>
+                    <li><a href="#">Search Term</a></li>
+                    <li><a href="#">Search Term</a></li>
+                  </ul>
+              </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Playlist #3 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Search Term</a></li>
+                      <li><a href="#">Search Term</a></li>
+                      <li><a href="#">Search Term</a></li>
+                      <li><a href="#">Search Term</a></li>
+                    </ul>
+                </li>
+                -->
+            </ul>
+            <div class="col-sm-3 col-md-3 pull-right">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Add to Playlist" name="q" ng-model="ytSearchCtrl.playlistInput">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit" ng-click="ytSearchCtrl.addToPlaylist()"><i class="glyphicon glyphicon-plus"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class='container'>
+        <youtube-video video-id="ytSearchCtrl.ytData.data.items[0].id.videoId"></youtube-video>
+        <youtube-video video-id="ytSearchCtrl.ytData.data.items[1].id.videoId"></youtube-video>
+        <youtube-video video-id="ytSearchCtrl.ytData.data.items[2].id.videoId"></youtube-video>
+        <youtube-video video-id="ytSearchCtrl.ytData.data.items[3].id.videoId"></youtube-video>
+        {{ytSearchCtrl.ytData}} {{ytSearchCtrl.newPlaylist}}
+    </div>
     <!-- bower:js -->
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-
+    <script src="bower_components/angular-youtube-mb/src/angular-youtube-embed.js"></script>
+    <script src="bower_components/angular-youtube-api-factory/dist/angular-youtube-api-factory.min.js"></script>
     <!-- endbower -->
-
-    <!-- inject:js -->
     <script src="app/app.module.js"></script>
     <script src="app/charts/youtubeapi.factory.js"></script>
     <script src="app/charts/youtubesearch.controller.js"></script>
     <script text="text/javascript" src="https://www.youtube.com/iframe_api"></script>
-    <script src="bower_components/angular-youtube-mb/src/angular-youtube-embed.js"></script>
     <script src="https://apis.google.com/js/client.js"></script>
-    <!-- endinject -->
 </body>
 
 </html>

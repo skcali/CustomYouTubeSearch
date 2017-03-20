@@ -5,32 +5,39 @@
         .module('app')
         .controller('YouTubeSearchController', YouTubeSearchController);
 
-    YouTubeSearchController.$inject = ['youTubeFactory'];
+    YouTubeSearchController.$inject = ['youtubeFactory'];
 
     /* @ngInject */
-    function YouTubeSearchController(youTubeFactory) {
+    function YouTubeSearchController(youtubeFactory) {
         var vm = this;
-        vm.check = '';
-        vm.vidSearch = function () {
-          var request = gabi.client.youtube.search.list({
-            part: "snippet",
-            type: "video",
-            q: encodeURIcomponent(vm.vidInput).replace(/%20g/, "+"),
-            maxResults: 3,
-            order: "viewCount",
-            publishedAfter: "2015-01-01T00:00:00Z"
-          });
-          request.execute(function(response) {
-            console.log(response);
-          });
-        }
-        youTubeFactory
-            .getData()
-            .then(function(data) {
 
-              })
-            .catch(function(error) {
-                console.log(error);
-            });
+        // Declare empty variables
+        vm.ytData = {};
+        vm.newPlaylist = [];
+
+        // Click function to add to empty playlist
+        vm.addToPlaylist = function() {
+            vm.newPlaylist.push(vm.playlistInput);
+            vm.playlistInput = '';
+        }
+
+        // Click function to grab data from playlist
+        vm.playlistSearch = function() {
+            youtubeFactory
+                .getVideosFromSearchByParams({
+                    q: vm.newPlaylist.join('|'),
+                    part: "snippet",
+                    maxResults: 4,
+                    order: "relevance",
+                    key: 'AIzaSyA3MMCi47ciNhnauXvtAMeZrU5TNNxZCSI'
+                })
+                .then(function(data) {
+                    // Need to message data so grab multiple videos
+                    vm.ytData = data;
+                    console.log(vm.ytData)
+                }).catch(function(error) {
+                    console.log(error);
+                });
+        }
     }
 })();
