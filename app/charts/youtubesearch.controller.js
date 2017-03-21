@@ -15,6 +15,14 @@
         vm.ytData = {};
         vm.newPlaylist = [];
 
+        vm.searchOptions = [
+            ['Date', 'date'],
+            ['Rating', 'rating'],
+            ['Relevance', 'relevance'],
+            ['Title', 'title'],
+            ['View Count', 'viewCount']
+        ];
+
         // Click function to add to empty playlist
         vm.addToPlaylist = function() {
             vm.newPlaylist.push(vm.playlistInput);
@@ -27,8 +35,8 @@
                 .getVideosFromSearchByParams({
                     q: vm.newPlaylist.join('|'),
                     part: "snippet",
-                    maxResults: 4,
-                    order: "relevance",
+                    maxResults: 10,
+                    order: vm.searchCondition,
                     key: 'AIzaSyA3MMCi47ciNhnauXvtAMeZrU5TNNxZCSI'
                 })
                 .then(function(data) {

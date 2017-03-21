@@ -66,11 +66,20 @@
         </div>
     </nav>
     <div class='container'>
+        <h3>Pick the order you wish to see the playlist:</h3>
+        <select class="selectpicker" ng-model="ytSearchCtrl.searchCondition" ng-options="searchOptions[1] as searchOptions[0] for searchOptions in ytSearchCtrl.searchOptions"></select>
+        <hr>
         <youtube-video video-id="ytSearchCtrl.ytData.data.items[0].id.videoId"></youtube-video>
         <youtube-video video-id="ytSearchCtrl.ytData.data.items[1].id.videoId"></youtube-video>
         <youtube-video video-id="ytSearchCtrl.ytData.data.items[2].id.videoId"></youtube-video>
         <youtube-video video-id="ytSearchCtrl.ytData.data.items[3].id.videoId"></youtube-video>
-        {{ytSearchCtrl.ytData}} {{ytSearchCtrl.newPlaylist}}
+        <youtube-video video-id="ytSearchCtrl.ytData.data.items[4].id.videoId"></youtube-video>
+        <youtube-video video-id="ytSearchCtrl.ytData.data.items[5].id.videoId"></youtube-video>
+        <youtube-video video-id="ytSearchCtrl.ytData.data.items[6].id.videoId"></youtube-video>
+        <youtube-video video-id="ytSearchCtrl.ytData.data.items[7].id.videoId"></youtube-video>
+        <youtube-video video-id="ytSearchCtrl.ytData.data.items[8].id.videoId"></youtube-video>
+        <youtube-video video-id="ytSearchCtrl.ytData.data.items[9].id.videoId"></youtube-video>
+        <!-- check json output {{ytSearchCtrl.ytData}} {{ytSearchCtrl.newPlaylist}} -->
     </div>
     <!-- bower:js -->
     <script src="bower_components/angular/angular.js"></script>
